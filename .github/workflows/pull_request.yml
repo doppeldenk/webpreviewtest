@@ -36,11 +36,7 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
           aws-secret-access-key: ${{ secrets.SECRET_ACCESS_KEY }}
 
-      - name: Extract branch name
-        id: extract_branch_name
-        run: echo "BRANCH_NAME=$(echo ${GITHUB_REF#refs/heads/})" >> $GITHUB_ENV
-
       - name: Deploy
         run: |
-          BRANCH_FOLDER=$(echo "${BRANCH_NAME}" | tr '[:upper:]' '[:lower:]' | sed 's/task\///g' | sed 's/_/-/g')
+          BRANCH_FOLDER=$(echo "${{ github.event.pull_request.head.ref }}" | tr '[:upper:]' '[:lower:]' | sed 's/task\///g' | sed 's/_/-/g')
           aws s3 sync dist/ s3://webpreviewtest/$BRANCH_FOLDER --delete
