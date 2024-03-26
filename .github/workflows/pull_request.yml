@@ -50,7 +50,7 @@ jobs:
                 \"KeyPrefixEquals\": \"${{ env.SUBDOMAIN }}/\" 
               },
               \"Redirect\": {
-                \"HostName\": \"webpreviewtest.s3-website-REGION.amazonaws.com\",
+                \"HostName\": \"webpreviewtest.s3-website-us-east-1.amazonaws.com\",
                 \"ReplaceKeyPrefixWith\": \"${{ env.SUBDOMAIN }}/\" 
               }
             }
