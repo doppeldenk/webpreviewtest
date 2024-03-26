@@ -4,8 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
     "build": "vue-tsc && vite build",
+    "dev": "vite",
+    "pr": "gh pr create --base main --fill-verbose && gh pr view --web",
     "preview": "vite preview"
   },
   "dependencies": {
